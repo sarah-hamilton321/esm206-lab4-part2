@@ -7,4 +7,26 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+# Packages 
+library(tidyverse)
+library(palmerpenguins)
+library(plotly)
+library(DT)
 ```
+
+Scatterplot of penguin flipper_length_mm (x) vs body_mass_g (y) with points 
+having dif colors based on species
+```{r}
+penguins_graph <- ggplot(data=penguins, aes(x=flipper_length_mm, y=body_mass_g))+
+  geom_point(aes(color=species))+
+  labs(x="Flipper length (mm)", y="Body Mass (g)", title="Penguins")
+  
+ggplotly(penguins_graph)
+```
+
+```{r}
+datatable(penguins)
+```
+
+
